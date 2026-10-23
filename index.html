@@ -1,329 +1,402 @@
 <!DOCTYPE html>
 <html lang="en" class="scroll-smooth">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>You Missed Bitches ($YMB) — The Gold Coin</title>
-  <meta name="description" content="Trump just showed a new coin, You Missed Bitches. $YMB on Ethereum. Buy with ETH, copy the contract, and open the chart." />
-  <link rel="icon" href="logo.jpg" />
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;900&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="styles.css" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>You Missed Bitches ($YMB) — Trump Just Showed a New Coin</title>
+  <meta name="description" content="Trump just showed a new coin, You Missed Bitches. $YMB on Ethereum. Copy the contract, buy on Uniswap, and watch the Dexscreener chart.">
+  <meta name="theme-color" content="#0c1830">
+  <link rel="icon" href="logo.jpg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Cinzel:wght@500;700;900&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            navy: {
+              950: "#07111f",
+              900: "#0c1830",
+              800: "#13284a",
+              700: "#1c3a66"
+            },
+            gold: {
+              50: "#fff8e6",
+              100: "#f8e7b0",
+              300: "#f0d078",
+              400: "#e4bc45",
+              500: "#d4a017",
+              700: "#8c6412",
+              900: "#4a3408"
+            },
+            crimson: "#b11226",
+            cream: "#f4ead2"
+          },
+          fontFamily: {
+            mint: ["Cinzel", "serif"],
+            display: ["Bebas Neue", "sans-serif"],
+            sans: ["Outfit", "sans-serif"]
+          },
+          boxShadow: {
+            coin: "0 25px 70px rgba(0,0,0,.55), 0 0 80px rgba(212,160,23,.28)"
+          }
+        }
+      }
+    };
+  </script>
+  <style>
+    :root { color-scheme: dark; }
+    body {
+      font-family: Outfit, sans-serif;
+      background-color: #0c1830;
+      background-image:
+        radial-gradient(1000px 520px at 85% -10%, rgba(244, 196, 96, 0.22), transparent 60%),
+        radial-gradient(800px 480px at -10% 20%, rgba(177, 18, 38, 0.14), transparent 55%),
+        radial-gradient(900px 600px at 50% 120%, rgba(212, 160, 23, 0.12), transparent 50%),
+        linear-gradient(180deg, rgba(7, 17, 31, 0.82), rgba(12, 24, 48, 0.92));
+      background-attachment: fixed;
+    }
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      z-index: -1;
+      background:
+        url("banner.jpg") center 20% / cover no-repeat;
+      opacity: 0.22;
+      filter: saturate(0.85);
+    }
+    .gold-text {
+      background: linear-gradient(180deg, #fff6d4 0%, #f8e7b0 22%, #e4bc45 48%, #a97820 72%, #fff1c2 100%);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+    .rim {
+      background: linear-gradient(180deg, #fff6d4, #e4bc45 35%, #8c6412 70%, #f0d078);
+    }
+    .reed {
+      background: repeating-conic-gradient(from 0deg, #ffe9a8 0deg 1.5deg, #8a6418 1.5deg 3.1deg);
+    }
+    .plaque {
+      background:
+        linear-gradient(180deg, rgba(28, 48, 82, 0.72), rgba(8, 16, 32, 0.88));
+      box-shadow: inset 0 1px 0 rgba(255, 246, 212, 0.18), 0 18px 50px rgba(0, 0, 0, 0.28);
+    }
+    .ticker-track {
+      display: flex;
+      width: max-content;
+      animation: ticker 32s linear infinite;
+    }
+    .float-coin { animation: floaty 5.5s ease-in-out infinite; }
+    .legend-spin { animation: spin-slow 56s linear infinite; transform-origin: 50% 50%; }
+    .shine { position: relative; overflow: hidden; }
+    .shine::after {
+      content: "";
+      position: absolute;
+      inset: -20%;
+      background: linear-gradient(115deg, transparent 36%, rgba(255,255,255,.42) 48%, transparent 60%);
+      transform: translateX(-130%) rotate(8deg);
+      animation: shine 5.5s ease-in-out infinite;
+      pointer-events: none;
+    }
+    @keyframes ticker { to { transform: translateX(-50%); } }
+    @keyframes floaty {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-10px); }
+    }
+    @keyframes spin-slow { to { transform: rotate(360deg); } }
+    @keyframes shine {
+      0%, 55% { transform: translateX(-130%) rotate(8deg); }
+      100% { transform: translateX(130%) rotate(8deg); }
+    }
+    #dexscreener-embed { position: relative; width: 100%; padding-bottom: 125%; }
+    #dexscreener-embed iframe { position: absolute; width: 100%; height: 100%; top: 0; left: 0; border: 0; }
+    @media (min-width: 1024px) {
+      #dexscreener-embed { padding-bottom: 62%; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      .ticker-track, .float-coin, .legend-spin, .shine::after { animation: none; }
+    }
+    :focus-visible { outline: 2px solid #f0d078; outline-offset: 3px; }
+  </style>
 </head>
-<body class="font-body antialiased">
-  <div class="pointer-events-none fixed inset-0 -z-10">
-    <img src="banner.jpg" alt="" class="h-full w-full object-cover object-[70%_center]" />
-    <div class="absolute inset-0 bg-ink/80"></div>
-    <div class="absolute inset-0 bg-gradient-to-b from-navy-800/50 via-ink/75 to-ink"></div>
-    <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_75%_0%,rgba(224,180,74,0.38),transparent_52%)]"></div>
-    <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_10%_90%,rgba(200,16,46,0.16),transparent_42%)]"></div>
+<body class="text-cream antialiased">
+  <div class="flex h-1.5" aria-hidden="true">
+    <div class="flex-1 bg-crimson"></div>
+    <div class="flex-1 bg-cream"></div>
+    <div class="flex-1 bg-navy-700"></div>
   </div>
 
-  <header class="sticky top-0 z-50 border-b border-gold-400/30 bg-ink/80 backdrop-blur-md">
-    <div class="mx-auto flex max-w-6xl flex-wrap items-center justify-between gap-x-4 gap-y-3 px-5 py-3">
+  <header class="sticky top-0 z-50 border-b border-gold-400/20 bg-navy-950/80 backdrop-blur-md">
+    <div class="mx-auto flex max-w-6xl items-center justify-between gap-4 px-5 py-3">
       <a href="#top" class="flex items-center gap-3">
-        <img src="logo.jpg" alt="" class="h-11 w-11 rounded-full object-cover ring-2 ring-gold-300" />
-        <span>
-          <span class="block font-display text-[13px] leading-none tracking-[0.16em] text-gold-100">YOU MISSED BITCHES</span>
-          <span class="mt-1 block text-[10px] font-semibold tracking-[0.42em] text-cream/70">$YMB</span>
+        <img src="logo.jpg" alt="" class="h-11 w-11 rounded-full object-cover ring-2 ring-gold-300">
+        <span class="leading-none">
+          <span class="block font-mint text-[11px] font-bold tracking-[0.22em] text-gold-100">YOU MISSED BITCHES</span>
+          <span class="block font-display text-2xl tracking-wide text-gold-300">$YMB</span>
         </span>
       </a>
-      <nav class="flex items-center gap-5 text-[11px] font-semibold tracking-[0.22em] text-cream/80">
-        <a href="#story" class="transition hover:text-gold-200">THE COIN</a>
-        <a href="#how-to-buy" class="transition hover:text-gold-200">HOW TO BUY</a>
-        <a href="#chart" class="transition hover:text-gold-200">CHART</a>
+      <nav class="hidden items-center gap-7 font-mint text-xs tracking-[0.18em] text-gold-100/80 md:flex">
+        <a href="#coin" class="hover:text-gold-300">The Coin</a>
+        <a href="#how-to-buy" class="hover:text-gold-300">How to Buy</a>
+        <a href="#chart" class="hover:text-gold-300">Chart</a>
       </nav>
-      <div class="flex items-center gap-2">
-        <a href="https://t.me/YMBtrump" target="_blank" rel="noopener noreferrer" aria-label="Telegram" class="h-10 w-10 overflow-hidden rounded-full ring-2 ring-gold-400 ring-offset-2 ring-offset-ink transition hover:ring-gold-100">
-          <img src="tg.png" alt="" class="h-full w-full object-cover" />
+      <div class="flex items-center gap-2.5">
+        <a href="https://t.me/YMBtrump" target="_blank" rel="noopener noreferrer" aria-label="Telegram" class="overflow-hidden rounded-full ring-2 ring-gold-400/70 transition hover:scale-105 hover:ring-gold-300">
+          <img src="tg.png" alt="" class="h-9 w-9 object-cover">
         </a>
-        <a href="https://x.com/YMBtrump" target="_blank" rel="noopener noreferrer" aria-label="X" class="h-10 w-10 overflow-hidden rounded-full ring-2 ring-gold-400 ring-offset-2 ring-offset-ink transition hover:ring-gold-100">
-          <img src="x.png" alt="" class="h-full w-full object-cover" />
+        <a href="https://x.com/YMBtrump" target="_blank" rel="noopener noreferrer" aria-label="X" class="overflow-hidden rounded-full ring-2 ring-gold-400/70 transition hover:scale-105 hover:ring-gold-300">
+          <img src="x.png" alt="" class="h-9 w-9 object-cover">
         </a>
-        <a href="https://app.uniswap.org/#/swap?inputCurrency=eth&outputCurrency=0x6b3f7c2AbAef2d64078384072F7C6A5Ef0a93722" target="_blank" rel="noopener noreferrer" class="btn-gold shine rounded-sm px-4 py-2.5 text-[11px] font-extrabold tracking-[0.18em] transition">BUY NOW</a>
+        <a href="https://app.uniswap.org/#/swap?inputCurrency=eth&outputCurrency=0x6b3f7c2AbAef2d64078384072F7C6A5Ef0a93722" target="_blank" rel="noopener noreferrer" class="rim rounded-full px-4 py-2 font-display text-lg tracking-wider text-navy-950 shadow-coin transition hover:brightness-110">Buy Now</a>
       </div>
     </div>
   </header>
 
-  <div class="overflow-hidden border-b border-gold-400/25 bg-ink/70">
-    <div class="ticker flex w-max">
-      <p class="flex items-center gap-8 px-4 py-2.5 text-[11px] font-semibold tracking-[0.32em] text-gold-200">
-        <span>★ TRUMP JUST SHOWED A NEW COIN</span>
-        <span>YOU MISSED BITCHES</span>
-        <span>$YMB</span>
-        <span>ETHEREUM</span>
-        <span>GOLD ISSUE</span>
-        <span>★ TRUMP JUST SHOWED A NEW COIN</span>
-        <span>YOU MISSED BITCHES</span>
-        <span>$YMB</span>
-        <span>ETHEREUM</span>
-        <span>GOLD ISSUE</span>
-      </p>
-      <p class="flex items-center gap-8 px-4 py-2.5 text-[11px] font-semibold tracking-[0.32em] text-gold-200" aria-hidden="true">
-        <span>★ TRUMP JUST SHOWED A NEW COIN</span>
-        <span>YOU MISSED BITCHES</span>
-        <span>$YMB</span>
-        <span>ETHEREUM</span>
-        <span>GOLD ISSUE</span>
-        <span>★ TRUMP JUST SHOWED A NEW COIN</span>
-        <span>YOU MISSED BITCHES</span>
-        <span>$YMB</span>
-        <span>ETHEREUM</span>
-        <span>GOLD ISSUE</span>
-      </p>
-    </div>
-  </div>
-
   <main id="top">
-    <section class="mx-auto grid max-w-6xl items-center gap-12 px-5 pb-8 pt-14 lg:grid-cols-[1.05fr_0.95fr] lg:pt-20">
-      <div>
-        <p class="inline-flex items-center gap-3 text-[11px] font-bold tracking-[0.38em] text-gold-200">
-          <span class="h-px w-8 bg-flag"></span>
-          COMMEMORATIVE GOLD ISSUE
-          <span class="h-px w-8 bg-flag"></span>
-        </p>
-        <p class="mt-6 font-display text-sm tracking-[0.28em] text-cream sm:text-base">TRUMP JUST SHOWED A NEW COIN</p>
-        <h1 class="gold-foil mt-3 font-display text-5xl font-black leading-[0.88] sm:text-7xl lg:text-8xl">
-          YOU<br />MISSED<br />BITCHES
-        </h1>
-        <p class="mt-5 font-display text-2xl tracking-[0.42em] text-gold-300 sm:text-3xl">$YMB</p>
-        <p class="mt-6 max-w-xl text-base leading-relaxed text-cream/85 sm:text-lg">
-          Trump just showed a new coin. “You Missed Bitches.” Gold rim, gold portrait, four words struck around the edge. That coin is $YMB, and it swaps from Ethereum.
-        </p>
-
-        <div class="mt-8 flex max-w-xl items-stretch overflow-hidden rounded-sm border border-gold-400/50 bg-black/45">
-          <div class="flex items-center border-r border-gold-400/30 px-3 text-[10px] font-bold tracking-[0.28em] text-gold-300">CA</div>
-          <code data-ca class="flex min-w-0 flex-1 items-center truncate px-3 py-3 font-mono text-sm tracking-wide text-gold-50">0x6b3f7c2AbAef2d64078384072F7C6A5Ef0a93722</code>
-          <button type="button" data-copy class="btn-gold px-4 text-[11px] font-extrabold tracking-[0.2em] transition">COPY</button>
-        </div>
-
-        <div class="mt-6 flex flex-wrap gap-3">
-          <a href="https://app.uniswap.org/#/swap?inputCurrency=eth&outputCurrency=0x6b3f7c2AbAef2d64078384072F7C6A5Ef0a93722" target="_blank" rel="noopener noreferrer" class="btn-gold shine rounded-sm px-7 py-3.5 text-sm font-extrabold tracking-[0.2em] transition">BUY NOW</a>
-          <a href="https://dexscreener.com/ethereum/0x6b3f7c2AbAef2d64078384072F7C6A5Ef0a93722" target="_blank" rel="noopener noreferrer" class="btn-line rounded-sm px-7 py-3.5 text-sm font-extrabold tracking-[0.2em] transition">CHART</a>
-        </div>
-      </div>
-
-      <div class="relative mx-auto w-full max-w-[520px]">
-        <div class="floaty relative mx-auto aspect-square w-[86%]">
-          <svg class="absolute inset-0 h-full w-full" viewBox="0 0 400 400" aria-hidden="true">
-            <defs>
-              <path id="legend" d="M200,200 m-170,0 a170,170 0 1,1 340,0 a170,170 0 1,1 -340,0" />
-            </defs>
-            <circle cx="200" cy="200" r="192" fill="none" stroke="#e0b44a" stroke-width="1.5" />
-            <circle cx="200" cy="200" r="178" fill="none" stroke="#efd07a" stroke-width="0.6" stroke-dasharray="1.5 3" />
-            <text fill="#f6e2a2" font-family="Cinzel, serif" font-size="13" letter-spacing="3.2">
-              <textPath href="#legend">★ YOU MISSED ★ $YMB ★ BITCHES ★ ETHEREUM ★ YOU MISSED ★ $YMB ★ BITCHES ★</textPath>
-            </text>
-          </svg>
-          <div class="absolute inset-[17%] rounded-full reed p-[9px]">
-            <img src="logo.jpg" alt="Gold coin stamped You Missed Bitches" class="h-full w-full rounded-full object-cover" />
-          </div>
-          <div class="pointer-events-none absolute inset-[22%] -z-10 rounded-full bg-gold-400/25 blur-3xl"></div>
-        </div>
-      </div>
-    </section>
-
-    <section class="mx-auto max-w-6xl px-5 pb-6">
-      <figure class="plaque relative overflow-hidden rounded-sm border border-gold-400/40">
-        <div class="pointer-events-none absolute inset-2 border border-gold-200/15"></div>
-        <img src="banner.jpg" alt="Trump holding up the You Missed Bitches gold coin" class="aspect-[21/9] max-h-[460px] w-full object-cover object-[62%_28%]" />
-        <figcaption class="flex flex-wrap items-center justify-between gap-2 border-t border-gold-400/30 bg-ink/80 px-4 py-3 text-[10px] font-bold tracking-[0.28em] text-gold-200 sm:px-6">
-          <span>THE MOMENT</span>
-          <span class="text-cream">TRUMP JUST SHOWED A NEW COIN “YOU MISSED BITCHES.”</span>
-          <span>MMXXVI</span>
-        </figcaption>
-      </figure>
-    </section>
-
-    <section class="mx-auto max-w-6xl px-5 py-8">
-      <div class="reed-rule"></div>
-      <dl class="mt-5 grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
-        <div class="plaque rounded-sm border border-gold-400/35 px-5 py-4">
-          <dt class="text-[10px] font-bold tracking-[0.32em] text-gold-300">ISSUE</dt>
-          <dd class="mt-2 font-display text-lg tracking-wide text-cream">You Missed Bitches</dd>
-        </div>
-        <div class="plaque rounded-sm border border-gold-400/35 px-5 py-4">
-          <dt class="text-[10px] font-bold tracking-[0.32em] text-gold-300">SYMBOL</dt>
-          <dd class="mt-2 font-display text-lg tracking-wide text-cream">$YMB</dd>
-        </div>
-        <div class="plaque rounded-sm border border-gold-400/35 px-5 py-4">
-          <dt class="text-[10px] font-bold tracking-[0.32em] text-gold-300">CHAIN</dt>
-          <dd class="mt-2 font-display text-lg tracking-wide text-cream">Ethereum</dd>
-        </div>
-        <div class="plaque rounded-sm border border-gold-400/35 px-5 py-4">
-          <dt class="text-[10px] font-bold tracking-[0.32em] text-gold-300">PAIR</dt>
-          <dd class="mt-2 font-display text-lg tracking-wide text-cream">ETH / $YMB</dd>
-        </div>
-      </dl>
-    </section>
-
-    <section id="story" class="mx-auto max-w-6xl scroll-mt-24 px-5 py-12">
-      <div class="grid items-center gap-10 lg:grid-cols-[0.9fr_1.1fr]">
-        <div>
-          <p class="text-[11px] font-bold tracking-[0.36em] text-gold-300">OBVERSE</p>
-          <h2 class="gold-foil mt-3 font-display text-4xl font-black leading-tight sm:text-5xl">The coin he held up.</h2>
-          <p class="mt-5 text-base leading-relaxed text-cream/85">
-            One gold piece, shown in the open. The legend on the rim reads You Missed Bitches. The portrait is struck in the same metal. $YMB is that coin, issued on Ethereum for anyone who did not look away.
+    <section class="relative overflow-hidden">
+      <div class="mx-auto grid max-w-6xl items-center gap-10 px-5 pb-16 pt-12 lg:grid-cols-[1.05fr_0.95fr] lg:pt-16">
+        <div class="order-2 lg:order-1">
+          <p class="font-mint text-[11px] font-bold tracking-[0.34em] text-gold-300 sm:text-xs">TRUMP JUST SHOWED A NEW COIN</p>
+          <h1 class="mt-3 font-display text-[18vw] leading-[0.84] text-gold-50 sm:text-8xl lg:text-[6.6rem]">
+            <span class="gold-text">YOU MISSED</span><br>
+            <span class="gold-text">BITCHES</span>
+          </h1>
+          <p class="mt-4 max-w-xl text-lg font-light leading-relaxed text-cream/90 sm:text-xl">
+            Trump just showed a new coin, <span class="font-semibold text-gold-100">“You Missed Bitches.”</span>
+            The strike is gold. The ticker is <span class="font-semibold text-gold-300">$YMB</span>. The chain is Ethereum.
           </p>
+
+          <button type="button" onclick="copyCA(this)" class="plaque mt-7 flex w-full max-w-xl items-center gap-3 rounded-2xl border border-gold-400/30 px-4 py-3 text-left transition hover:border-gold-300/70">
+            <span class="font-mint text-[10px] tracking-[0.22em] text-gold-300">CA</span>
+            <span id="ca-value" class="min-w-0 flex-1 truncate font-mint text-lg tracking-[0.18em] text-cream">0x6b3f7c2AbAef2d64078384072F7C6A5Ef0a93722</span>
+            <span data-copy-label class="rim shrink-0 rounded-full px-3 py-1 font-display text-base tracking-wider text-navy-950">Copy</span>
+          </button>
+          <p class="mt-2 font-mint text-[10px] tracking-[0.2em] text-gold-100/60">OFFICIAL CONTRACT · TAP TO COPY</p>
+
+          <div class="mt-6 flex flex-wrap items-center gap-3">
+            <a href="https://app.uniswap.org/#/swap?inputCurrency=eth&outputCurrency=0x6b3f7c2AbAef2d64078384072F7C6A5Ef0a93722" target="_blank" rel="noopener noreferrer" class="rim rounded-full px-7 py-3 font-display text-2xl tracking-wider text-navy-950 shadow-coin transition hover:brightness-110">Buy Now</a>
+            <a href="https://dexscreener.com/ethereum/0x6b3f7c2AbAef2d64078384072F7C6A5Ef0a93722" target="_blank" rel="noopener noreferrer" class="rounded-full border border-gold-300/70 bg-navy-950/50 px-7 py-3 font-display text-2xl tracking-wider text-gold-100 transition hover:bg-gold-400/10">Chart</a>
+          </div>
+
+          <div class="mt-6 flex items-center gap-3">
+            <a href="https://t.me/YMBtrump" target="_blank" rel="noopener noreferrer" class="overflow-hidden rounded-full ring-2 ring-gold-400/80 transition hover:scale-105">
+              <img src="tg.png" alt="Telegram" class="h-11 w-11 object-cover">
+            </a>
+            <a href="https://x.com/YMBtrump" target="_blank" rel="noopener noreferrer" class="overflow-hidden rounded-full ring-2 ring-gold-400/80 transition hover:scale-105">
+              <img src="x.png" alt="X" class="h-11 w-11 object-cover">
+            </a>
+            <span class="font-mint text-[10px] tracking-[0.22em] text-gold-100/70">TELEGRAM · X</span>
+          </div>
         </div>
-        <div class="grid gap-4 sm:grid-cols-3">
-          <article class="plaque rounded-sm border border-gold-400/35 p-5">
-            <p class="font-display text-3xl text-gold-300">I</p>
-            <h3 class="mt-3 font-display text-sm tracking-[0.14em] text-gold-100">THE LEGEND</h3>
-            <p class="mt-2 text-sm leading-relaxed text-cream/75">YOU MISSED across the top. BITCHES across the base. The words he showed, now the name of the coin.</p>
-          </article>
-          <article class="plaque rounded-sm border border-gold-400/35 p-5">
-            <p class="font-display text-3xl text-gold-300">II</p>
-            <h3 class="mt-3 font-display text-sm tracking-[0.14em] text-gold-100">THE METAL</h3>
-            <p class="mt-2 text-sm leading-relaxed text-cream/75">A United States coin look. Reeded edge, gold face, stars on the ring. Built to be recognized at a glance.</p>
-          </article>
-          <article class="plaque rounded-sm border border-gold-400/35 p-5">
-            <p class="font-display text-3xl text-gold-300">III</p>
-            <h3 class="mt-3 font-display text-sm tracking-[0.14em] text-gold-100">THE CHAIN</h3>
-            <p class="mt-2 text-sm leading-relaxed text-cream/75">Ethereum only. Swap ETH for $YMB, match the contract, and keep the coin in your own wallet.</p>
-          </article>
+
+        <div class="order-1 lg:order-2">
+          <div class="relative mx-auto max-w-xl pb-24 sm:pb-28">
+            <figure class="rim rounded-[1.6rem] p-[3px] shadow-coin">
+              <div class="overflow-hidden rounded-[1.45rem] bg-navy-950">
+                <img src="banner.jpg" alt="Trump holding up the You Missed Bitches gold coin" class="aspect-[16/10] w-full object-cover object-[72%_center]">
+                <figcaption class="flex items-center justify-between bg-navy-950/90 px-4 py-2 font-mint text-[10px] tracking-[0.22em] text-gold-100">
+                  <span>THE MOMENT</span>
+                  <span class="text-gold-300">OVAL OFFICE</span>
+                </figcaption>
+              </div>
+            </figure>
+
+            <div class="float-coin absolute -bottom-2 left-1/2 w-[13.5rem] -translate-x-1/2 sm:w-64">
+              <div class="relative aspect-square">
+                <svg class="legend-spin absolute inset-0 h-full w-full" viewBox="0 0 100 100" aria-hidden="true">
+                  <defs>
+                    <path id="circ" d="M50,50 m-44,0 a44,44 0 1,1 88,0 a44,44 0 1,1 -88,0"></path>
+                  </defs>
+                  <text fill="#f8e7b0" font-size="4.15" font-family="Cinzel, serif" letter-spacing="1.15">
+                    <textPath href="#circ">★ YOU MISSED BITCHES ★ $YMB ★ ETHEREUM ★ TRUMP JUST SHOWED A NEW COIN ★&nbsp;</textPath>
+                  </text>
+                </svg>
+                <div class="reed absolute inset-[11%] rounded-full p-[7px] shadow-coin">
+                  <div class="shine h-full w-full rounded-full bg-gold-700 p-[3px]">
+                    <img src="logo.jpg" alt="You Missed Bitches gold coin" class="h-full w-full scale-110 rounded-full object-cover">
+                  </div>
+                </div>
+              </div>
+              <div class="mx-auto mt-1 h-5 w-3/5 rounded-full bg-gold-400/25 blur-lg" aria-hidden="true"></div>
+            </div>
+          </div>
         </div>
       </div>
     </section>
 
-    <section id="how-to-buy" class="relative mx-auto max-w-6xl scroll-mt-24 px-5 py-12">
-      <div class="reed-rule mb-10"></div>
-      <div class="flex flex-wrap items-end justify-between gap-4">
-        <div>
-          <p class="text-[11px] font-bold tracking-[0.36em] text-gold-300">MINTING DESK</p>
-          <h2 class="gold-foil mt-3 font-display text-4xl font-black sm:text-5xl">How to Buy</h2>
-          <p class="mt-3 max-w-xl text-cream/80">Four steps to buy $YMB with Ethereum. Wallet, ETH, Uniswap, then a contract check.</p>
+    <div class="border-y border-gold-400/25 bg-navy-950/70">
+      <div class="overflow-hidden py-3">
+        <div class="ticker-track font-display text-2xl tracking-[0.18em] text-gold-100">
+          <span class="px-4">TRUMP JUST SHOWED A NEW COIN · YOU MISSED BITCHES · $YMB · ETHEREUM · BUY THE STRIKE ·</span>
+          <span class="px-4">TRUMP JUST SHOWED A NEW COIN · YOU MISSED BITCHES · $YMB · ETHEREUM · BUY THE STRIKE ·</span>
         </div>
-        <a href="https://app.uniswap.org/#/swap?inputCurrency=eth&outputCurrency=0x6b3f7c2AbAef2d64078384072F7C6A5Ef0a93722" target="_blank" rel="noopener noreferrer" class="btn-gold shine rounded-sm px-6 py-3 text-xs font-extrabold tracking-[0.2em] transition">BUY NOW</a>
       </div>
+    </div>
 
-      <ol class="relative mt-8 grid gap-4 md:grid-cols-2 xl:grid-cols-4">
-        <li class="plaque rounded-sm border border-gold-400/40 p-5">
-          <div class="flex h-14 w-14 items-center justify-center rounded-full reed">
-            <span class="flex h-[78%] w-[78%] items-center justify-center rounded-full bg-ink font-display text-lg text-gold-200">01</span>
+    <section id="coin" class="mx-auto max-w-6xl px-5 py-16 sm:py-20">
+      <div class="rim rounded-[1.7rem] p-[2px] shadow-coin">
+        <div class="plaque rounded-[1.6rem] px-6 py-10 text-center sm:px-12 sm:py-14">
+          <p class="font-mint text-[11px] tracking-[0.34em] text-gold-300">THE COIN ON CAMERA</p>
+          <h2 class="mx-auto mt-4 max-w-4xl font-display text-5xl leading-[0.9] text-gold-50 sm:text-7xl">
+            <span class="gold-text">“YOU MISSED BITCHES.”</span>
+          </h2>
+          <p class="mx-auto mt-5 max-w-2xl text-base leading-relaxed text-cream/85 sm:text-lg">
+            Trump just showed a new coin. The name on the rim is You Missed Bitches. The symbol is YMB.
+            This is the mint desk for that coin on Ethereum: the contract, the Uniswap buy, and the Dexscreener chart.
+          </p>
+          <div class="mx-auto mt-8 grid max-w-3xl gap-3 sm:grid-cols-3">
+            <div class="rounded-2xl border border-gold-400/25 bg-navy-950/50 px-4 py-4">
+              <p class="font-mint text-[10px] tracking-[0.22em] text-gold-300">NAME</p>
+              <p class="mt-1 font-display text-2xl tracking-wide text-cream">YOU MISSED BITCHES</p>
+            </div>
+            <div class="rounded-2xl border border-gold-400/25 bg-navy-950/50 px-4 py-4">
+              <p class="font-mint text-[10px] tracking-[0.22em] text-gold-300">SYMBOL</p>
+              <p class="mt-1 font-display text-2xl tracking-wide text-cream">$YMB</p>
+            </div>
+            <div class="rounded-2xl border border-gold-400/25 bg-navy-950/50 px-4 py-4">
+              <p class="font-mint text-[10px] tracking-[0.22em] text-gold-300">CHAIN</p>
+              <p class="mt-1 font-display text-2xl tracking-wide text-cream">ETHEREUM</p>
+            </div>
           </div>
-          <h3 class="mt-5 font-display text-lg tracking-wide text-gold-100">Set up a wallet</h3>
-          <p class="mt-2 text-sm leading-relaxed text-cream/75">Install MetaMask, Rabby, or Coinbase Wallet, or use Trust Wallet on your phone. Create it and keep the recovery phrase offline. This is the pocket $YMB lands in.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="how-to-buy" class="mx-auto max-w-6xl px-5 pb-16 sm:pb-20">
+      <div class="mb-8 flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between">
+        <div>
+          <p class="font-mint text-[11px] tracking-[0.34em] text-gold-300">ETHEREUM MINT DESK</p>
+          <h2 class="mt-2 font-display text-6xl leading-none text-gold-50 sm:text-7xl"><span class="gold-text">HOW TO BUY</span></h2>
+        </div>
+        <p class="max-w-md text-sm leading-relaxed text-cream/75 sm:text-right">Four steps. ETH in, $YMB out. Trump showed the coin. This is how you take the strike.</p>
+      </div>
+      <div class="h-2.5 rounded-full reed" aria-hidden="true"></div>
+
+      <ol class="mt-8 grid gap-4 md:grid-cols-2 xl:grid-cols-4">
+        <li class="rim rounded-3xl p-[2px]">
+          <article class="plaque flex h-full flex-col rounded-[1.4rem] p-5">
+            <span class="font-mint text-3xl text-gold-300">I</span>
+            <h3 class="mt-3 font-display text-3xl tracking-wide text-cream">GET ETHEREUM</h3>
+            <p class="mt-2 flex-1 text-sm leading-relaxed text-cream/75">Install MetaMask, Rabby, or another Ethereum wallet. Fund it with ETH on Ethereum mainnet. You need ETH for the swap and for gas.</p>
+          </article>
         </li>
-        <li class="plaque rounded-sm border border-gold-400/40 p-5">
-          <div class="flex h-14 w-14 items-center justify-center rounded-full reed">
-            <span class="flex h-[78%] w-[78%] items-center justify-center rounded-full bg-ink font-display text-lg text-gold-200">02</span>
-          </div>
-          <h3 class="mt-5 font-display text-lg tracking-wide text-gold-100">Add Ethereum</h3>
-          <p class="mt-2 text-sm leading-relaxed text-cream/75">Buy ETH or send ETH you already hold to that wallet. ETH is what you swap for $YMB. Leave a little extra ETH for the network fee.</p>
+        <li class="rim rounded-3xl p-[2px]">
+          <article class="plaque flex h-full flex-col rounded-[1.4rem] p-5">
+            <span class="font-mint text-3xl text-gold-300">II</span>
+            <h3 class="mt-3 font-display text-3xl tracking-wide text-cream">OPEN UNISWAP</h3>
+            <p class="mt-2 flex-1 text-sm leading-relaxed text-cream/75">Hit Buy Now. It opens the ETH to $YMB swap. Connect the same wallet and stay on the Ethereum network.</p>
+          </article>
         </li>
-        <li class="plaque rounded-sm border border-gold-400/40 p-5">
-          <div class="flex h-14 w-14 items-center justify-center rounded-full reed">
-            <span class="flex h-[78%] w-[78%] items-center justify-center rounded-full bg-ink font-display text-lg text-gold-200">03</span>
-          </div>
-          <h3 class="mt-5 font-display text-lg tracking-wide text-gold-100">Swap on Uniswap</h3>
-          <p class="mt-2 text-sm leading-relaxed text-cream/75">Press Buy Now. Uniswap opens with ETH in and $YMB out. Choose the amount of ETH, read the quote, and confirm the swap in your wallet.</p>
+        <li class="rim rounded-3xl p-[2px]">
+          <article class="plaque flex h-full flex-col rounded-[1.4rem] p-5">
+            <span class="font-mint text-3xl text-gold-300">III</span>
+            <h3 class="mt-3 font-display text-3xl tracking-wide text-cream">MATCH THE CA</h3>
+            <p class="mt-2 flex-1 text-sm leading-relaxed text-cream/75">Copy the contract on this page and match it to the token Uniswap shows. The symbol is YMB. Until the live address is posted, the CA reads 0x6b3f7c2AbAef2d64078384072F7C6A5Ef0a93722.</p>
+          </article>
         </li>
-        <li class="plaque rounded-sm border border-gold-400/40 p-5">
-          <div class="flex h-14 w-14 items-center justify-center rounded-full reed">
-            <span class="flex h-[78%] w-[78%] items-center justify-center rounded-full bg-ink font-display text-lg text-gold-200">04</span>
-          </div>
-          <h3 class="mt-5 font-display text-lg tracking-wide text-gold-100">Match the contract</h3>
-          <p class="mt-2 text-sm leading-relaxed text-cream/75">Copy the contract on this page and compare it with the token in the swap before you sign. After it confirms, add $YMB in your wallet with that same contract.</p>
+        <li class="rim rounded-3xl p-[2px]">
+          <article class="plaque flex h-full flex-col rounded-[1.4rem] p-5">
+            <span class="font-mint text-3xl text-gold-300">IV</span>
+            <h3 class="mt-3 font-display text-3xl tracking-wide text-cream">SWAP AND HOLD</h3>
+            <p class="mt-2 flex-1 text-sm leading-relaxed text-cream/75">Enter your ETH amount, review the quote and gas, then confirm in your wallet. Add $YMB with the official CA so the coin shows in your balance.</p>
+          </article>
         </li>
       </ol>
+
+      <div class="mt-8 flex flex-wrap items-center gap-3">
+        <a href="https://app.uniswap.org/#/swap?inputCurrency=eth&outputCurrency=0x6b3f7c2AbAef2d64078384072F7C6A5Ef0a93722" target="_blank" rel="noopener noreferrer" class="rim rounded-full px-7 py-3 font-display text-2xl tracking-wider text-navy-950 shadow-coin transition hover:brightness-110">Buy Now</a>
+        <button type="button" onclick="copyCA(this)" class="rounded-full border border-gold-300/70 px-6 py-3 font-display text-2xl tracking-wider text-gold-100 transition hover:bg-gold-400/10">
+          <span data-copy-label>Copy CA</span>
+        </button>
+      </div>
     </section>
 
-    <section id="chart" class="mx-auto max-w-6xl scroll-mt-24 px-5 py-12">
-      <div class="mb-6 flex flex-wrap items-end justify-between gap-4">
+    <section id="chart" class="mx-auto max-w-6xl px-5 pb-20">
+      <div class="mb-6 flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
         <div>
-          <p class="text-[11px] font-bold tracking-[0.36em] text-gold-300">THE BOARD</p>
-          <h2 class="gold-foil mt-3 font-display text-4xl font-black sm:text-5xl">Live Chart</h2>
-          <p class="mt-3 text-cream/80">DexScreener for the Ethereum pair. The contract sits under the frame so you can copy it beside the price.</p>
+          <p class="font-mint text-[11px] tracking-[0.34em] text-gold-300">DEXSCREENER</p>
+          <h2 class="mt-2 font-display text-6xl leading-none sm:text-7xl"><span class="gold-text">THE CHART</span></h2>
+          <p class="mt-3 max-w-xl text-sm leading-relaxed text-cream/75">Live embed for the $YMB Ethereum pair. The frame follows the same pair as the Chart button.</p>
         </div>
-        <a href="https://dexscreener.com/ethereum/0x6b3f7c2AbAef2d64078384072F7C6A5Ef0a93722" target="_blank" rel="noopener noreferrer" class="btn-line rounded-sm px-6 py-3 text-xs font-extrabold tracking-[0.2em] transition">CHART</a>
+        <a href="https://dexscreener.com/ethereum/0x6b3f7c2AbAef2d64078384072F7C6A5Ef0a93722" target="_blank" rel="noopener noreferrer" class="rounded-full border border-gold-300/70 px-6 py-3 text-center font-display text-2xl tracking-wider text-gold-100 transition hover:bg-gold-400/10">Chart</a>
       </div>
-
-      <div class="mb-4 flex max-w-xl items-stretch overflow-hidden rounded-sm border border-gold-400/50 bg-black/45">
-        <div class="flex items-center border-r border-gold-400/30 px-3 text-[10px] font-bold tracking-[0.28em] text-gold-300">CA</div>
-        <code data-ca class="flex min-w-0 flex-1 items-center truncate px-3 py-3 font-mono text-sm tracking-wide text-gold-50">0x6b3f7c2AbAef2d64078384072F7C6A5Ef0a93722</code>
-        <button type="button" data-copy class="btn-gold px-4 text-[11px] font-extrabold tracking-[0.2em] transition">COPY</button>
-      </div>
-
-      <div class="rounded-sm bg-gradient-to-br from-gold-100 via-gold-500 to-gold-800 p-[2px] shadow-[0_30px_70px_rgba(0,0,0,0.4)]">
-        <div class="bg-ink p-1.5 sm:p-2">
-          <iframe
-            title="DexScreener chart for YMB"
-            src="https://dexscreener.com/ethereum/0x6b3f7c2AbAef2d64078384072F7C6A5Ef0a93722?embed=1&loadChartSettings=0&trades=0&tabs=0&info=0&chartLeftToolbar=0&chartDefaultOnMobile=1&chartTheme=dark&theme=dark&chartStyle=1&chartType=usd&interval=15"
-            class="h-[480px] w-full bg-navy-900 sm:h-[640px]"
-            loading="lazy"
-          ></iframe>
+      <div class="rim rounded-[1.6rem] p-[3px] shadow-coin">
+        <div class="overflow-hidden rounded-[1.45rem] bg-navy-950">
+          <div id="dexscreener-embed">
+            <iframe
+              title="Dexscreener chart for You Missed Bitches ($YMB)"
+              src="https://dexscreener.com/ethereum/0x6b3f7c2AbAef2d64078384072F7C6A5Ef0a93722?embed=1&loadChartSettings=0&trades=0&tabs=0&info=0&chartLeftToolbar=0&chartDefaultOnMobile=1&chartTheme=dark&theme=dark&chartStyle=1&chartType=usd&interval=15"></iframe>
+          </div>
         </div>
       </div>
     </section>
   </main>
 
-  <footer class="mt-6 border-t border-gold-400/30 bg-ink/80">
-    <div class="mx-auto grid max-w-6xl gap-8 px-5 py-10 md:grid-cols-[1.3fr_0.7fr]">
-      <div>
-        <div class="flex items-center gap-3">
-          <img src="logo.jpg" alt="" class="h-12 w-12 rounded-full object-cover ring-2 ring-gold-400" />
-          <div>
-            <p class="font-display tracking-[0.16em] text-gold-100">YOU MISSED BITCHES</p>
-            <p class="text-[11px] font-bold tracking-[0.36em] text-cream/60">$YMB · ETHEREUM</p>
-          </div>
-        </div>
-        <p class="mt-4 max-w-md text-sm leading-relaxed text-cream/70">
-          Trump just showed a new coin. “You Missed Bitches.” A commemorative meme coin on Ethereum. Not legal tender and not financial advice. Match the contract before you swap.
-        </p>
-      </div>
-      <div class="flex flex-col items-start gap-4 md:items-end">
-        <div class="flex gap-2">
-          <a href="https://t.me/YMBtrump" target="_blank" rel="noopener noreferrer" aria-label="Telegram" class="h-11 w-11 overflow-hidden rounded-full ring-2 ring-gold-400 ring-offset-2 ring-offset-ink transition hover:ring-gold-100">
-            <img src="tg.png" alt="" class="h-full w-full object-cover" />
-          </a>
-          <a href="https://x.com/YMBtrump" target="_blank" rel="noopener noreferrer" aria-label="X" class="h-11 w-11 overflow-hidden rounded-full ring-2 ring-gold-400 ring-offset-2 ring-offset-ink transition hover:ring-gold-100">
-            <img src="x.png" alt="" class="h-full w-full object-cover" />
-          </a>
-        </div>
-        <div class="flex flex-wrap gap-3">
-          <a href="https://app.uniswap.org/#/swap?inputCurrency=eth&outputCurrency=0x6b3f7c2AbAef2d64078384072F7C6A5Ef0a93722" target="_blank" rel="noopener noreferrer" class="btn-gold shine rounded-sm px-5 py-2.5 text-[11px] font-extrabold tracking-[0.18em] transition">BUY NOW</a>
-          <a href="https://dexscreener.com/ethereum/0x6b3f7c2AbAef2d64078384072F7C6A5Ef0a93722" target="_blank" rel="noopener noreferrer" class="btn-line rounded-sm px-5 py-2.5 text-[11px] font-extrabold tracking-[0.18em] transition">CHART</a>
+  <div class="flex h-1.5" aria-hidden="true">
+    <div class="flex-1 bg-navy-700"></div>
+    <div class="flex-1 bg-cream"></div>
+    <div class="flex-1 bg-crimson"></div>
+  </div>
+  <footer class="bg-navy-950/85">
+    <div class="mx-auto flex max-w-6xl flex-col gap-6 px-5 py-8 sm:flex-row sm:items-center sm:justify-between">
+      <div class="flex items-center gap-3">
+        <img src="logo.jpg" alt="" class="h-12 w-12 rounded-full object-cover ring-2 ring-gold-300">
+        <div>
+          <p class="font-mint text-sm tracking-[0.16em] text-gold-100">YOU MISSED BITCHES</p>
+          <p class="font-display text-2xl leading-none text-gold-300">$YMB · ETHEREUM</p>
         </div>
       </div>
+      <div class="flex items-center gap-3">
+        <a href="https://t.me/YMBtrump" target="_blank" rel="noopener noreferrer" aria-label="Telegram" class="overflow-hidden rounded-full ring-2 ring-gold-400/70">
+          <img src="tg.png" alt="" class="h-10 w-10 object-cover">
+        </a>
+        <a href="https://x.com/YMBtrump" target="_blank" rel="noopener noreferrer" aria-label="X" class="overflow-hidden rounded-full ring-2 ring-gold-400/70">
+          <img src="x.png" alt="" class="h-10 w-10 object-cover">
+        </a>
+      </div>
     </div>
-    <div class="border-t border-gold-400/20 py-4 text-center text-[10px] font-semibold tracking-[0.28em] text-gold-300/80">
-      ★ YOU MISSED BITCHES ★ $YMB ★ MMXXVI ★
-    </div>
+    <p class="px-5 pb-8 text-center text-xs text-cream/50">© 2026 You Missed Bitches. $YMB is a meme coin. Nothing here is financial advice. Match the contract before you swap.</p>
   </footer>
 
+  <div class="fixed inset-x-0 bottom-0 z-40 border-t border-gold-400/25 bg-navy-950/90 p-3 backdrop-blur md:hidden">
+    <div class="mx-auto flex max-w-lg gap-2">
+      <a href="https://app.uniswap.org/#/swap?inputCurrency=eth&outputCurrency=0x6b3f7c2AbAef2d64078384072F7C6A5Ef0a93722" target="_blank" rel="noopener noreferrer" class="rim flex-1 rounded-full py-2.5 text-center font-display text-xl tracking-wider text-navy-950">Buy Now</a>
+      <a href="https://dexscreener.com/ethereum/0x6b3f7c2AbAef2d64078384072F7C6A5Ef0a93722" target="_blank" rel="noopener noreferrer" class="flex-1 rounded-full border border-gold-300/70 py-2.5 text-center font-display text-xl tracking-wider text-gold-100">Chart</a>
+    </div>
+  </div>
+  <div class="h-16 md:hidden" aria-hidden="true"></div>
+
   <script>
-    var CA = "0x6b3f7c2AbAef2d64078384072F7C6A5Ef0a93722";
-    document.querySelectorAll("[data-ca]").forEach(function (node) {
-      node.textContent = CA;
-    });
-    document.querySelectorAll("[data-copy]").forEach(function (button) {
-      button.addEventListener("click", function () {
-        var label = button.textContent;
-        function done() {
-          button.textContent = "COPIED";
-          setTimeout(function () { button.textContent = label; }, 1400);
-        }
-        if (navigator.clipboard && navigator.clipboard.writeText) {
-          navigator.clipboard.writeText(CA).then(done).catch(function () {
-            fallback();
-            done();
-          });
-        } else {
-          fallback();
-          done();
-        }
-        function fallback() {
-          var area = document.createElement("textarea");
-          area.value = CA;
-          document.body.appendChild(area);
-          area.select();
-          document.execCommand("copy");
-          area.remove();
-        }
-      });
-    });
+    function copyCA(btn) {
+      var ca = document.getElementById("ca-value").textContent.trim();
+      var label = btn.querySelector("[data-copy-label]");
+      var previous = label ? label.textContent : "";
+      var finish = function () {
+        if (!label) return;
+        label.textContent = "Copied";
+        window.setTimeout(function () { label.textContent = previous; }, 1500);
+      };
+      var fallback = function () {
+        var area = document.createElement("textarea");
+        area.value = ca;
+        area.setAttribute("readonly", "");
+        area.style.position = "fixed";
+        area.style.left = "-9999px";
+        document.body.appendChild(area);
+        area.select();
+        try { document.execCommand("copy"); finish(); } catch (err) {}
+        document.body.removeChild(area);
+      };
+      if (navigator.clipboard && window.isSecureContext) {
+        navigator.clipboard.writeText(ca).then(finish).catch(fallback);
+      } else {
+        fallback();
+      }
+    }
   </script>
 </body>
 </html>
